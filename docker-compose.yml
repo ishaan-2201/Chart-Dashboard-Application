@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    build: ./charts_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./charts_backend:/app
+    command: python manage.py runserver 0.0.0.0:8000
+
+  frontend:
+    build: ./charts-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./charts-frontend:/app
+    command: npm run dev
